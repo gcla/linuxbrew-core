@@ -33,6 +33,7 @@ class GoAT111 < Formula
   end
 
   def install
+    ENV["CGO_ENABLED"] = "1"
     (buildpath/"gobootstrap").install resource("gobootstrap")
     ENV["GOROOT_BOOTSTRAP"] = buildpath/"gobootstrap"
 
