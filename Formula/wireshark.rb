@@ -12,6 +12,8 @@ class Wireshark < Formula
   end
 
   depends_on "cmake" => :build
+  depends_on "flex" => :build if OS.linux?
+  depends_on "bison" => :build if OS.linux?
   depends_on "c-ares"
   depends_on "glib"
   depends_on "gnutls"
