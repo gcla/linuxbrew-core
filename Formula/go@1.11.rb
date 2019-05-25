@@ -33,17 +33,13 @@ class GoAT111 < Formula
   end
 
   def install
-    ENV["CGO_ENABLED"] = "1"
+    ENV["CGO_ENABLED"] = "1" unless OS.mac?
     (buildpath/"gobootstrap").install resource("gobootstrap")
     ENV["GOROOT_BOOTSTRAP"] = buildpath/"gobootstrap"
 
     cd "src" do
       ENV["GOROOT_FINAL"] = libexec
-      if OS.mac?
-        ENV["GOOS"]         = "darwin"
-      elsif OS.linux?
-        ENV["GOOS"]         = "linux"
-      end
+      ENV["GOOS"]         = OS.mac? ? "darwin" : "linux"
       system "./make.bash", "--no-clean"
     end
 
