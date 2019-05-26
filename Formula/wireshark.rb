@@ -11,7 +11,9 @@ class Wireshark < Formula
     sha256 "6f12831257770c9d36b042df85f8ba5ed553296f1f36e918cf3097fbec165ea6" => :sierra
   end
 
+  depends_on "bison" => :build if OS.linux?
   depends_on "cmake" => :build
+  depends_on "flex" => :build if OS.linux?
   depends_on "c-ares"
   depends_on "glib"
   depends_on "gnutls"
