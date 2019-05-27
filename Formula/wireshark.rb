@@ -11,10 +11,6 @@ class Wireshark < Formula
     sha256 "6f12831257770c9d36b042df85f8ba5ed553296f1f36e918cf3097fbec165ea6" => :sierra
   end
 
-  unless OS.mac?
-    depends_on "bison" => :build
-    depends_on "flex" => :build
-  end
   depends_on "cmake" => :build
   depends_on "c-ares"
   depends_on "glib"
@@ -25,6 +21,10 @@ class Wireshark < Formula
   depends_on "libssh"
   depends_on "lua@5.1"
   depends_on "nghttp2"
+  unless OS.mac?
+    depends_on "bison" => :build
+    depends_on "flex" => :build
+  end
 
   def install
     args = std_cmake_args + %W[
